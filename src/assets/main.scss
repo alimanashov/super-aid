@@ -1,0 +1,31 @@
+@import "@/assets/base.scss";
+@import "@/assets/_variables.scss";
+
+#app {
+  min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+a:hover {
+  color: black;
+}
+
+.container {
+  padding-left: $container-padding-x-xl !important;
+  padding-right: $container-padding-x-xl !important;
+}
+@media (max-width: 1024px) {
+  .container {
+    padding-left: $container-padding-x-lg !important;
+    padding-right: $container-padding-x-lg !important;
+  }
+}
+@media (max-width: 768px) {
+  .container {
+    padding-left: $container-padding-x-md !important;
+    padding-right: $container-padding-x-md !important;
+  }
+}
