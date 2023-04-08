@@ -1,21 +1,30 @@
 <script setup lang="ts">
-import {classifyQuestion} from "@/api/question";
+import AIChat from "@/components/AIChat.vue";
 
-async function classifyTest() {
-  const res = await classifyQuestion("A person is unconscious, first aid instructions?");
-  alert(res);
-}
 </script>
 
 <template>
   <div class="container">
     <div class="home">
-      <h1>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, aliquid architecto dicta dignissimos ducimus
-        earum eligendi harum ipsa maiores mollitia nemo odit perferendis porro recusandae suscipit unde voluptatum.
-        Doloribus, totam.
+      <h1 class="heading">
+        Meet the SuperAid app!
       </h1>
-      <button @click="classifyTest">CLASSIFY TEST</button>
+      <div class="about-app">
+        <h3>Ask the AI about first aid or emergency situations!</h3>
+        <div class="examples">
+          <h3>Here are some examples</h3>
+          <ul>
+            <li>A person is unconscious, what to do?</li>
+            <li>How to call an emergency in Kazakhstan?</li>
+            <li>How to make a CPR?</li>
+          </ul>
+        </div>
+      </div>
+      <h2>Try it now!</h2>
+      <div class="">
+        <AIChat />
+      </div>
+      <div class="usage"></div>
     </div>
   </div>
 </template>
@@ -24,10 +33,29 @@ async function classifyTest() {
 .container {
   flex-grow: 1;
   margin-top: 2rem;
+  margin-bottom: 2rem;
   .home {
-    padding: 1rem;
+    padding: 2rem;
     border-radius: 20px;
-    background: $white;
+    background: rgb(27, 67, 101);
+    color: $white;
+
+    .heading {
+      font-size: 40px;
+      color: $primary;
+    }
+    .about-app {
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+
+      .examples {
+        margin-top: 1rem;
+
+        ul {
+          margin-left: 1rem;
+        }
+      }
+    }
   }
 }
 </style>
