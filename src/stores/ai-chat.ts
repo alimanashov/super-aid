@@ -20,9 +20,10 @@ export const useAiChatStore = defineStore({
         },
     },
     actions: {
-        initChat() {
+        initChat(emergency: boolean = false) {
             this.chat = {
                 messages: [],
+                emergency: emergency,
             };
             this.userMessage = {
                 message: "",
@@ -38,21 +39,34 @@ export const useAiChatStore = defineStore({
         async sendMessageToModel() {
             if (!this.chat || !this.userMessage || this.waitingForModelResponse) return;
             this.waitingForModelResponse = true;
+            let promptForGeneration = "";
 
-            const res = await classifyQuestion(this.userMessage.message);
-            if (res < 0.2) {
-                this.errorMessage = "The question was asked incorrectly, please try again";
-                setTimeout(() => {
-                    this.errorMessage = "";
-                }, 10000)
-                return;
+            if (!this.chat.emergency) {
+                const res = await classifyQuestion(this.userMessage.message);
+                if (res < 0.2) {
+                    this.errorMessage = "The question was asked incorrectly, please try again";
+                    setTimeout(() => {
+                        this.errorMessage = "";
+                    }, 10000)
+                    return;
+                }
+                this.userMessage.classificationResult = res;
+                this.userMessage.passedClassification = true;
+                this.userMessage.timestamp = Date.now();
+                this.chat.messages.push(this.userMessage);
+            } else {
+                navigator.geolocation.getCurrentPosition((position) => {
+                    if (this.userMessage && this.chat) {
+                        this.userMessage.location = position;
+                        this.userMessage.passedClassification = true;
+                        this.userMessage.timestamp = Date.now();
+                        this.chat.messages.push(this.userMessage);
+                    }
+                });
+                promptForGeneration = "Emergency!";
             }
-            this.userMessage.classificationResult = res;
-            this.userMessage.passedClassification = true;
-            this.userMessage.timestamp = Date.now();
-            this.chat.messages.push(this.userMessage);
 
-            const result = await generateAnswerForQuestion(this.userMessage.message);
+            const result = await generateAnswerForQuestion(promptForGeneration, this.userMessage.message);
             this.waitingForModelResponse = false;
             if (result !== "Error occurred!") {
                 this.chat.messages.push(

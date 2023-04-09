@@ -1,21 +1,33 @@
 <script lang="ts" setup>
 import { RouterLink } from "vue-router";
+import router from "@/router";
+import {computed} from "vue";
+
+const activeNav = computed(() => {
+  if (router.currentRoute.value.name === "home")
+    return "home";
+  if (router.currentRoute.value.name === "emergency")
+    return "emergency";
+  if (router.currentRoute.value.name === "about")
+    return "about";
+  return "";
+});
 </script>
 
 <template>
   <div class="container">
     <nav class="nav-items">
-      <RouterLink to="/emergency" class="nav-item">
+      <RouterLink to="/emergency" class="nav-item" :class="{'active-nav': activeNav === 'emergency'}">
         <span class="material-icons">favorite</span>
         <span>Emergency</span>
       </RouterLink>
-      <RouterLink to="/" class="nav-item active-nav">
+      <RouterLink to="/" class="nav-item" :class="{'active-nav': activeNav === 'home'}">
         <span class="material-icons">home</span>
         <span>Home</span>
       </RouterLink>
-      <RouterLink to="/help" class="nav-item">
+      <RouterLink to="/about" class="nav-item" :class="{'active-nav': activeNav === 'about'}">
         <span class="material-icons">question_mark</span>
-        <span>Help</span>
+        <span>About</span>
       </RouterLink>
     </nav>
   </div>

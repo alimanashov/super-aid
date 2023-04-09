@@ -19,11 +19,14 @@ export async function classifyQuestion(questionText: string): Promise<number> {
     }
 }
 
-export async function generateAnswerForQuestion(questionText: string): Promise<string> {
+export async function generateAnswerForQuestion(
+    prompt: string = "Shortly answer a question about first aid",
+    questionText: string
+): Promise<string> {
     try {
         const res = await cohere.post("/generate", {
             max_tokens: 300,
-            prompt: `Shortly answer a question about first aid. ${questionText}`,
+            prompt: `${prompt}. ${questionText}`,
         });
         console.log(res.data)
         return res.data.generations[0].text;

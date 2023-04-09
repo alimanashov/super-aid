@@ -1,5 +1,6 @@
 export interface Chat {
     messages: Array<UserMessage | ModelResponse>,
+    emergency: boolean,
 }
 
 export interface UserMessage {
@@ -7,6 +8,7 @@ export interface UserMessage {
     timestamp: number,
     passedClassification: boolean,
     classificationResult: number,
+    location?: GeolocationPosition,
 }
 
 export interface ModelResponse {

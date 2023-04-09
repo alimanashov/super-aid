@@ -2,8 +2,14 @@
 import MessageComponent from "@/components/MessageComponent.vue";
 import {useAiChatStore} from "@/stores/ai-chat";
 
+const props = defineProps({
+  emergency: {
+    default: false,
+  }
+})
+
 const chatStore = useAiChatStore();
-chatStore.initChat();
+chatStore.initChat(props.emergency);
 </script>
 
 <template>
