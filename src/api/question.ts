@@ -20,7 +20,7 @@ export async function classifyQuestion(questionText: string): Promise<number> {
 }
 
 export async function generateAnswerForQuestion(
-    prompt: string = "Shortly answer a question about first aid",
+    prompt: string,
     questionText: string
 ): Promise<string> {
     try {

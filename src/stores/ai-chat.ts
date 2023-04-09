@@ -39,11 +39,13 @@ export const useAiChatStore = defineStore({
         async sendMessageToModel() {
             if (!this.chat || !this.userMessage || this.waitingForModelResponse) return;
             this.waitingForModelResponse = true;
-            let promptForGeneration = "Shortly answer a question about first aid";
+            let promptForGeneration = "The First aid.";
+            const theUserMessage = this.userMessage.message;
 
             if (!this.chat.emergency) {
-                const res = await classifyQuestion(this.userMessage.message);
+                const res = await classifyQuestion(theUserMessage);
                 if (res < 0.2) {
+                    this.waitingForModelResponse = false;
                     this.errorMessage = "The question was asked incorrectly, please try again";
                     setTimeout(() => {
                         this.errorMessage = "";
@@ -66,7 +68,7 @@ export const useAiChatStore = defineStore({
                 promptForGeneration = "Emergency!";
             }
 
-            const result = await generateAnswerForQuestion(promptForGeneration, this.userMessage.message);
+            const result = await generateAnswerForQuestion(promptForGeneration, theUserMessage);
             this.waitingForModelResponse = false;
             if (result !== "Error occurred!") {
                 this.chat.messages.push(

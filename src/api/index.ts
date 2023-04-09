@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const cohereURL = "https://api.cohere.ai/v1";
-const cohereAPIToken = "kwzSq4QLNBcFCA732RxXiUdSJdvp0fQsI4htQP2K";
+const cohereAPIToken = "l9rqmbRq6ay5Tq5wkyxhQ6cN1HIvW798nUqBeO4i";
 export const serverURL = "";
 export const api = axios.create({
     baseURL: serverURL,
