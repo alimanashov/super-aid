@@ -24,7 +24,7 @@ chatStore.initChat(props.emergency);
     </div>
     <div v-if="chatStore.errorMessage" class="error-message">{{ chatStore.errorMessage }}</div>
     <div class="chat-actions">
-      <button v-if="chatStore.hasContinue" @click="chatStore.continueTheAnswering()" class="send-message-btn">CONTINUE</button>
+<!--      <button v-if="chatStore.hasContinue" @click="chatStore.continueTheAnswering()" class="send-message-btn">CONTINUE</button>-->
       <button @click="chatStore.sendMessageToModel()" class="send-message-btn">SEND</button>
     </div>
   </div>

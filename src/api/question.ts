@@ -43,7 +43,7 @@ export async function continueAnswerForQuestion(): Promise<string> {
     try {
         const res = await cohere.post("/generate", {
             max_tokens: 300,
-            prompt: "Continue the answer",
+            prompt: "complete",
         });
         console.log(res.data);
         return res.data.generations[0].text;

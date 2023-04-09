@@ -1,11 +1,11 @@
 <script lang="ts" setup>
-import type {UserMessage} from "@/types/chat.types";
+import type {ModelResponse, UserMessage} from "@/types/chat.types";
 import type {PropType} from "vue";
 
 const props = defineProps({
   message: {
     default: null,
-    type: Object as PropType<UserMessage>
+    type: Object as PropType<UserMessage | ModelResponse>
   },
 });
 </script>
@@ -13,7 +13,7 @@ const props = defineProps({
 <template>
   <div class="message" v-if="message">
     <div class="message-header">
-      <span v-if="typeof message.passedClassification === 'undefined'" class="material-icons">smart_toy</span>
+      <span v-if="!message.hasOwnProperty('passedClassification')" class="material-icons">smart_toy</span>
       <span v-else class="material-icons">person</span>
     </div>
     <p class="message-text">{{ message.message }}</p>
