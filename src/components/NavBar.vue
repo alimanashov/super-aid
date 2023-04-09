@@ -26,9 +26,8 @@ import { RouterLink } from "vue-router";
   display: flex;
   justify-content: center;
   background: $primary;
-  margin-top: 1.5rem;
   padding: 1rem 1.5rem;
-  border-radius: 20px;
+  border-radius: 0 0 20px 20px;
   box-shadow: 0 3px 3px -2px rgb(39 44 51 / 10%), 0 3px 4px 0 rgb(39 44 51 / 4%),
     0 1px 8px 0 rgb(39 44 51 / 2%);
 

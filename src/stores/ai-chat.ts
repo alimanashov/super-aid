@@ -41,7 +41,7 @@ export const useAiChatStore = defineStore({
 
             const res = await classifyQuestion(this.userMessage.message);
             if (res < 0.2) {
-                this.errorMessage = "Question is not properly given, please try again";
+                this.errorMessage = "The question was asked incorrectly, please try again";
                 setTimeout(() => {
                     this.errorMessage = "";
                 }, 10000)
