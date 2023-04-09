@@ -1,8 +1,11 @@
 <script lang="ts" setup>
+import type {UserMessage} from "@/types/chat.types";
+import type {PropType} from "vue";
 
 const props = defineProps({
   message: {
     default: null,
+    type: Object as PropType<UserMessage>
   },
 });
 </script>
