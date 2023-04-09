@@ -39,7 +39,7 @@ export const useAiChatStore = defineStore({
         async sendMessageToModel() {
             if (!this.chat || !this.userMessage || this.waitingForModelResponse) return;
             this.waitingForModelResponse = true;
-            let promptForGeneration = "";
+            let promptForGeneration = "Shortly answer a question about first aid";
 
             if (!this.chat.emergency) {
                 const res = await classifyQuestion(this.userMessage.message);

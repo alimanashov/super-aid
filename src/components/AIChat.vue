@@ -13,17 +13,14 @@ chatStore.initChat(props.emergency);
 </script>
 
 <template>
-  <div class="chat" v-if="chatStore.chat">
-    <div class="chat-messages">
+  <div class="chat" v-if="chatStore && chatStore.chat">
+    <div class="chat-messages" v-if="chatStore.chat">
       <div v-for="message in chatStore.chat.messages" :key="message.timestamp">
         <MessageComponent :message="message" />
       </div>
     </div>
-    <div class="user-input-zone">
-      <textarea @change="(event) => {
-        chatStore.updateUserInput(event.target.value);
-        event.target.value = '';
-      }" placeholder="How to make a CPR?"></textarea>
+    <div class="user-input-zone" v-if="chatStore.userMessage">
+      <textarea v-model="chatStore.userMessage.message" placeholder="How to make a CPR?"></textarea>
     </div>
     <div v-if="chatStore.errorMessage" class="error-message">{{ chatStore.errorMessage }}</div>
     <div class="chat-actions">

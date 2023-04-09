@@ -1,10 +1,7 @@
 <script lang="ts" setup>
-import type {PropType} from "vue";
-import type {ModelResponse, UserMessage} from "@/types/chat.types";
 
 const props = defineProps({
   message: {
-    type: Object as PropType<UserMessage | ModelResponse | null>,
     default: null,
   },
 });
