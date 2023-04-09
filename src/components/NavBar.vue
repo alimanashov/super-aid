@@ -19,15 +19,15 @@ const activeNav = computed(() => {
     <nav class="nav-items">
       <RouterLink to="/emergency" class="nav-item" :class="{'active-nav': activeNav === 'emergency'}">
         <span class="material-icons">favorite</span>
-        <span>Emergency</span>
+        <span class="text">Emergency</span>
       </RouterLink>
       <RouterLink to="/" class="nav-item" :class="{'active-nav': activeNav === 'home'}">
         <span class="material-icons">home</span>
-        <span>Home</span>
+        <span class="text">Home</span>
       </RouterLink>
       <RouterLink to="/about" class="nav-item" :class="{'active-nav': activeNav === 'about'}">
         <span class="material-icons">question_mark</span>
-        <span>About</span>
+        <span class="text">About</span>
       </RouterLink>
     </nav>
   </div>
@@ -44,7 +44,6 @@ const activeNav = computed(() => {
     0 1px 8px 0 rgb(39 44 51 / 2%);
 
   .nav-item {
-    font-size: 13px;
     width: 100px;
     height: 100px;
     display: flex;
@@ -60,6 +59,9 @@ const activeNav = computed(() => {
     &:not(.active-nav):hover {
       background-color: $light-blue;
     }
+    span.text {
+      font-size: 13px;
+    }
   }
   .active-nav {
     background: $bold-blue;
@@ -67,14 +69,29 @@ const activeNav = computed(() => {
 }
 @media screen and (max-width: 1024px) {
   .nav-items {
-    margin-top: 1rem;
     padding: 0.75rem 1.315rem;
+    .nav-item {
+      span.text {
+        font-size: 10px;
+      }
+    }
   }
 }
 @media screen and (max-width: 620px) {
   .nav-items {
-    margin-top: 0.5rem;
     padding: 0.5rem 0.75rem;
+
+    .nav-item {
+      width: 70px;
+      height: 70px;
+      span {
+        font-size: 20px;
+      }
+
+      span.text {
+        font-size: 8px;
+      }
+    }
   }
 }
 </style>

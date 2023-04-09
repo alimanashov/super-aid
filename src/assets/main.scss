@@ -29,3 +29,9 @@ a:hover {
     padding-right: $container-padding-x-md !important;
   }
 }
+@media (max-width: 400px) {
+  .container {
+    padding-left: $container-padding-x-sm !important;
+    padding-right: $container-padding-x-sm !important;
+  }
+}

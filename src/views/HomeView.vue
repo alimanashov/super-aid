@@ -27,9 +27,9 @@ import AIChat from "@/components/AIChat.vue";
       <div class="usage">
         <h2>Usage guide</h2>
         <ul>
-          <li>Try to be closer in description to first aid or emergency situation (random text will be ignored)</li>
-          <li>Just give a short summary about situation or a short question</li>
-          <li>Send it and wait for AI response</li>
+          <li>Try to be more specific in your description of a situation (random text will be ignored).</li>
+          <li>Just give a short summary of the situation or a short question.</li>
+          <li>Send it and wait for an AI response.</li>
         </ul>
       </div>
     </div>
@@ -70,6 +70,68 @@ import AIChat from "@/components/AIChat.vue";
       }
       ul {
         margin-left: 1rem;
+      }
+    }
+  }
+}
+@media screen and (max-width: 1024px) {
+  .container {
+    .home {
+      padding: 1.5rem;
+      .heading {
+        font-size: 32px;
+      }
+
+      .about-app {
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+
+        .examples {
+          margin-top: 0.75rem;
+
+          ul {
+            margin-left: 0.75rem;
+          }
+        }
+      }
+
+      .usage {
+        margin-top: 0.75rem;
+
+        ul {
+          margin-left: 0.75rem;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 620px) {
+  .container {
+    .home {
+      padding: 1rem;
+      .heading {
+        font-size: 24px;
+      }
+
+      .about-app {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+
+        .examples {
+          margin-top: 0.75rem;
+
+          ul {
+            margin-left: 0.75rem;
+          }
+        }
+      }
+
+      .usage {
+        margin-top: 0.75rem;
+
+        ul {
+          margin-left: 0.75rem;
+        }
       }
     }
   }

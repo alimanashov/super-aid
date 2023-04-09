@@ -23,12 +23,18 @@ const props = defineProps({
 <style lang="scss" scoped>
 .message {
   margin-bottom: 0.5rem;
-  max-width: 50%;
+  max-width: 70%;
   min-width: 100px;
   align-self: start;
   padding: 0.5rem;
   background: $light-blue;
   color: $white;
   border-radius: 10px;
+}
+@media screen and (max-width: 620px) {
+  .message {
+    max-width: 100%;
+    border-radius: 5px;
+  }
 }
 </style>
