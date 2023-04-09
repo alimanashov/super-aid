@@ -23,9 +23,15 @@ chatStore.initChat(props.emergency);
       <textarea v-model="chatStore.userMessage.message" placeholder="How to make a CPR?"></textarea>
     </div>
     <div v-if="chatStore.errorMessage" class="error-message">{{ chatStore.errorMessage }}</div>
-    <div class="chat-actions">
+    <div class="chat-actions" v-if="chatStore">
 <!--      <button v-if="chatStore.hasContinue" @click="chatStore.continueTheAnswering()" class="send-message-btn">CONTINUE</button>-->
-      <button @click="chatStore.sendMessageToModel()" class="send-message-btn">SEND</button>
+      <button
+          @click="chatStore.sendMessageToModel()"
+          class="send-message-btn"
+          :class="{'wait-btn': chatStore.waitingForModelResponse}"
+      >
+        {{ chatStore.waitingForModelResponse ? "WAIT" : "SEND" }}
+      </button>
     </div>
   </div>
 </template>
@@ -90,6 +96,9 @@ chatStore.initChat(props.emergency);
 
       &:hover {
         background: $light-blue;
+      }
+      &.wait-btn {
+        background: $dark-blue;
       }
     }
   }
